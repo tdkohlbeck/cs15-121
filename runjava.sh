@@ -6,6 +6,7 @@ file=$1
 if [ ${file#*.} == "java" ]
 then
 	name=$( basename $1 .java )
+	printf "_______________________________________________\n"
 	printf "$1:\n\n"
 	#printf "javac $1\n"
 	#printf "java -classpath ${file%/*}/ $name\n"
