@@ -63,7 +63,34 @@ class Stack<T> {
 	*/
 }
 
+class Queue<T> {
+	ArrayList<T> q = new ArrayList<T>();
+	public int last() {
+		return q.size() - 1;
+	}
+	public void enq(T data) {
+		q.add(data);
+	}
+	public T deq() {
+		T data = q.get(0);
+		q.remove(0);
+		return data;
+	}
+	public T peek() {
+		return q.get(0);
+	}
+}
+
 public class Jan1417<T> {
+	private static void testQueue() {
+		Queue<Object> q = new Queue<Object>();
+		q.enq(7);
+		q.enq("yay");
+		q.enq(2.71);
+		System.out.println(q.peek());
+		q.deq();
+		System.out.println(q.peek());
+	}
 	private static void testSLL() {
 		SLL<Integer> list = new SLL<Integer>();
 		list.add(6);
@@ -83,7 +110,8 @@ public class Jan1417<T> {
 	}
 	public static void main(String[] args) {
 		//testSLL();
-		testStack();
+		//testStack();
+		testQueue();
 	}
 }
 /*
@@ -94,4 +122,5 @@ LESSONS:
 4. rename the file when you rename the class
 5. static classes cannot be nested inside two classes?
 6. when looping, you're checking to see if next is null, not scout
+7. don't forget semi-colons!
 */
