@@ -1,3 +1,5 @@
+import java.util.*;
+
 class SLL<T> {
 	private static class Node<T> {
 		private T data;
@@ -31,14 +33,57 @@ class SLL<T> {
 	}
 }
 
+class Stack<T> {
+	private ArrayList<T> stack;
+	public Stack() {
+		stack = new ArrayList<T>();
+	}
+	public int last() {
+		return stack.size() - 1;
+	}
+	public T peek() {
+		if (stack.isEmpty()) throw new Error();
+		return stack.get(last());
+	}
+	public T pop() {
+		if (stack.isEmpty()) throw new Error();
+		T data = stack.get(last());
+		stack.remove(last());
+		return data;
+	}
+	public void push(T data) {
+		stack.add(data);
+	}
+	/*
+	LESSONS:
+	1. import java.util.* to use ArrayList
+	2. don't access ArrayList by index, use .get(), .add(), etc.
+	3. have to specify an instance's type in the method (T data = ...)
+	4.
+	*/
+}
+
 public class Jan1417<T> {
-	public static void main(String[] args) {
+	private static void testSLL() {
 		SLL<Integer> list = new SLL<Integer>();
 		list.add(6);
 		list.add(6);
 		list.add(6);
-		list.add(6);
+		list.add(7);
 		System.out.println(list.toString());
+	}
+	private static void testStack() {
+		Stack<String> stack = new Stack<String>();
+		stack.push("yey");
+		stack.push("bravo");
+		stack.push("eh?");
+		System.out.println(stack.peek());
+		stack.pop();
+		System.out.println(stack.peek());
+	}
+	public static void main(String[] args) {
+		//testSLL();
+		testStack();
 	}
 }
 /*
