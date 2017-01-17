@@ -74,11 +74,9 @@ class Q<T> {
 	}
 	public String toString() {
 		StringBuffer s = new StringBuffer();
-		int i = 0;
-		while (i < 4) {
+		for (int i = 0; i < curr; i++) {
 			int next = (front + i) % cap;
 			s.append(arr[next] + ", ");
-			i++;
 		}
 		return s.toString();
 	}
