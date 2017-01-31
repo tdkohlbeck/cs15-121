@@ -60,7 +60,7 @@ class Q<T> {
 	public void enq(T data) {
 		if (curr == cap) throw new Error("at capacity");
 		back = (front + curr) % cap;
-		arr[back] = (T) data;
+		arr[back] = data;
 		curr++;
 	}
 	public T deq() {

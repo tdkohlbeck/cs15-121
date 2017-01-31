@@ -5,7 +5,6 @@
 2. cyclic linked list
 3. doubly-linked list
 4. cyclic doubly-linked list
-5. iterator
 
 ## method:
 1. isEmpty()
@@ -29,6 +28,7 @@
 19. reverse()
 20. removeAll(T find)
 21. orderedInsert(T data) // assume sorted list
+22. iterator
 
 # stack and queue practice problem combinations
 
