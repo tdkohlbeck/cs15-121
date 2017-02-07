@@ -17,6 +17,21 @@ class CLL<T> {
 		return head == null;
 	}
 
+	public void add(T data) {
+		if (isEmpty()) {
+			addFirst(data);
+			return;
+		}
+		if (head.next == head) {
+			head.next = new Node<T>(data, head);
+			return;
+		}
+		Node<T> scout = head;
+		while (scout.next != head) scout = scout.next;
+		scout.next = new Node<T>(data, head);
+		return;
+	}
+
 	public void addFirst(T data) {
 		if (isEmpty()) {
 			head = new Node<T>(data, null);
@@ -42,6 +57,17 @@ class CLL<T> {
 		scout.next = head.next;
 		head = head.next;
 		return data;
+	}
+
+	public CLL<T> copy() {
+		CLL<T> copy = new CLL<T>();
+		if (isEmpty()) return copy;
+		Node<T> scout = head;
+		do {
+			copy.add(scout.data);
+			scout = scout.next;
+		} while (scout != head);
+		return copy;
 	}
 
 	public String toString() {
@@ -88,6 +114,12 @@ public class Feb0717 {
 		System.out.println(list.toString());
 		list.removeFirst();
 		list.removeFirst();
+		System.out.println(list.toString());
+		CLL<String> copy = list.copy();
+		copy.add("1");
+		copy.add("2");
+		copy.add("3");
+		System.out.println(copy.toString());
 		System.out.println(list.toString());
 	}
 
