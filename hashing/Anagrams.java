@@ -27,23 +27,35 @@ class AnagramSolver {
 	private String sort(String s) {
 		String[] chars = s.split("");
 		Arrays.sort(chars);
-		Arrays.toString(chars);
-		System.out.println(chars);
-		return chars;
+		StringBuilder sb = new StringBuilder();
+		for (String str : chars) {
+			sb.append(str);
+		}
+		//Arrays.toString(chars);
+		//System.out.println(chars);
+		return sb.toString();
 	}
 
 	public String[] get(String s) {
-		//System.out.println(s);
 		String key = sort(s);
-		//System.out.println(s);
-		return (String[]) map.get(key).toArray();
+		//System.out.println(map.get(key));
+		LinkedList<String> list = map.get(key);
+		if (list != null) return list.toArray(new String[0]);
+		else {
+			String[] sa = {"N/A",};
+			return sa;
+		}
 	}
 }
 
 public class Anagrams {
 	private static void testMySolution() {
-		AnagramSolver grams = new AnagramSolver();
-		System.out.println(grams.get("bread"));
+		AnagramSolver solver = new AnagramSolver();
+		String[] grams = solver.get("reader");
+		for (String gram : grams) {
+			System.out.print(gram + ", ");
+		}
+		System.out.println();
 	}
 	public static void main(String[] args) {
 		testMySolution();
