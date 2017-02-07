@@ -1,3 +1,5 @@
+import java.util.*;
+
 class CLL<T> {
 
 	private static class Node<T> {
@@ -39,6 +41,28 @@ class CLL<T> {
 	}
 }
 
+class Stack<T> {
+	private LinkedList<T> list = new LinkedList<T>(); // (2)
+	public void push(T data) {
+		list.add(data);
+	}
+	public T peek() {
+		return list.get(list.size()-1);
+	}
+	public T pop() {
+		T data = list.peek();
+		list.removeLast();
+		return data;
+	}
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for (T item : list) {
+			sb.append(item + ", ");
+		}
+		return sb.toString();
+	}
+}
+
 public class Feb0717 {
 
 	private static void testCLL() {
@@ -49,12 +73,26 @@ public class Feb0717 {
 		System.out.println(list.toString());
 	}
 
+	private static void testStack() {
+		Stack<String> s = new Stack<String>(); // (1)
+		s.push("yey");
+		s.push("bravo");
+		s.push("eh?");
+		System.out.println(s.peek());
+		s.pop();
+		System.out.println(s.peek());
+	}
+
 	public static void main(String[] args) {
-		testCLL();
+		//testCLL();
+		testStack();
 	}
 }
 /*
 LESSONS:
 CLL:
 (1) scout != null -> SLL, scout != head -> CLL
+Stack:
+(1) String not T when instantiating ;)
+(2) if initialized to null, then initialize it eventually
 */
