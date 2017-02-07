@@ -30,7 +30,22 @@ class CLL<T> {
 		scout.next = head;
 	}
 
+	public T removeFirst() {
+		if (isEmpty()) throw new Error("nothing to remove");
+		T data = head.data; // (2)
+		if (head.next == head) {
+			head = null;
+			return data;
+		}
+		Node<T> scout = head;
+		while (scout.next != head) scout = scout.next;
+		scout.next = head.next;
+		head = head.next;
+		return data;
+	}
+
 	public String toString() {
+		if (isEmpty()) return ""; // (3)
 		StringBuilder sb = new StringBuilder();
 		Node<T> scout = head;
 		do {
@@ -71,6 +86,9 @@ public class Feb0717 {
 		list.addFirst("yey");
 		list.addFirst("bravo");
 		System.out.println(list.toString());
+		list.removeFirst();
+		list.removeFirst();
+		System.out.println(list.toString());
 	}
 
 	private static void testStack() {
@@ -84,14 +102,16 @@ public class Feb0717 {
 	}
 
 	public static void main(String[] args) {
-		//testCLL();
-		testStack();
+		testCLL();
+		//testStack();
 	}
 }
 /*
 LESSONS:
 CLL:
 (1) scout != null -> SLL, scout != head -> CLL
+(2) don't forget to return a value!
+(3) edge cases for toString too!
 Stack:
 (1) String not T when instantiating ;)
 (2) if initialized to null, then initialize it eventually
