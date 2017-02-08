@@ -40,3 +40,8 @@
 1. array
 2. ArrayList
 3. Linked List
+
+## sorts
+1. bucket
+2. bubble
+3. selection

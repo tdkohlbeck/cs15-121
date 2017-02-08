@@ -104,6 +104,36 @@ class Stack<T> {
 	}
 }
 
+class Q<T> {
+
+	private Object[] arr;
+	private int front, back, curr, size;
+
+	public Q(int s) {
+		arr = new Object[s];
+		front = 0;
+		back = 0;
+		curr = 0;
+		size = s;
+	}
+
+	public void enq(T data) {
+		if (curr == size) throw new Error("no room");
+		back = front + curr;
+		if (back >= size) back = back % size;
+		arr[back] = (Object) data;
+		curr++;
+	}
+
+	public T deq() {
+		if (curr == 0) throw new Error("nothing there");
+		T data = (T) arr[front];
+		front = front == size - 1 ? 0 : front++;
+		curr--;
+		return data;
+	}
+}
+
 public class Feb0717 {
 
 	private static void testCLL() {
@@ -133,9 +163,19 @@ public class Feb0717 {
 		System.out.println(s.peek());
 	}
 
+	private static void testQ() {
+		Q<String> q = new Q<String>(4);
+		q.enq("yey");
+		q.enq("bravo");
+		q.enq("eh?");
+		System.out.println(q.deq());
+		System.out.println(q.deq()); // TODO
+	}
+
 	public static void main(String[] args) {
-		testCLL();
+		//testCLL();
 		//testStack();
+		testQ();
 	}
 }
 /*
