@@ -127,10 +127,22 @@ class Q<T> {
 
 	public T deq() {
 		if (curr == 0) throw new Error("nothing there");
+		if (front == size) front = 0;
 		T data = (T) arr[front];
-		front = front == size - 1 ? 0 : front++;
+		front++;
 		curr--;
 		return data;
+	}
+
+	public String toString() {
+		if (curr == 0) throw new Error("nothing there");
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < curr; i++) {
+			int scout = front + i;
+			if (scout >= size) scout = scout % size;
+			sb.append(arr[scout] + ", ");
+		}
+		return sb.toString();
 	}
 }
 
@@ -168,8 +180,14 @@ public class Feb0717 {
 		q.enq("yey");
 		q.enq("bravo");
 		q.enq("eh?");
+		q.enq("one");
+		q.deq();
+		q.deq();
+		q.enq("two");
+		System.out.println(q.toString());
+		q.deq();
 		System.out.println(q.deq());
-		System.out.println(q.deq()); // TODO
+		System.out.println(q.deq());
 	}
 
 	public static void main(String[] args) {
