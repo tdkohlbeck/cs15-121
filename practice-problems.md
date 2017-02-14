@@ -1,6 +1,6 @@
 # linked list practice problem combinations:
 
-## class:
+## list:
 1. linked list
 2. cyclic linked list
 3. doubly-linked list
@@ -36,12 +36,23 @@
 1. stack
 2. queue
 
-## implementation
+## implementation:
 1. array
 2. ArrayList
-3. Linked List
+3. LinkedList
 
-## sorts
+## hashing:
+1. HashSet
+2. HashMap
+3. LinkedHashSet
+4. LinkedHashMap
+5. TreeSet
+6. TreeMap
+
+## sorts:
 1. bucket
 2. bubble
 3. selection
+4. insertion
+5. mergesort
+6. quicksort?
